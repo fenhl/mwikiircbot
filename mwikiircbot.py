@@ -13,11 +13,29 @@ class Handler:
             self.bot.joinchan(chan)
 
 def main(cmd, args):
-    if len(args) < 2:
-        print("Usage: " + cmd + " <host> <channel> [<channel> ...]")
+    args = args[:]
+    parsemode = ["host"]
+    host = None
+    name = "MediaWiki"
+    channels = []
+    while len(args) > 0:
+        if len(parsemode) < 1:
+            if args[0] == "-n":
+                parsemode.insert(0, "name")
+            else:
+                channels.append(args[0])
+        else:
+            if parsemode[0] == "name":
+                name = args[0]
+            elif parsemode[0] == "host":
+                host = args[0]
+            parsemode = parsemode[1:]
+        args = args[1:]
+    if host == None:
+        print("Usage: " + cmd + " [-n <name>] <host> <channel> [<channel> ...]")
         return
     elif len(args) > 1:
-        Handler(host=args[0], channels=args[1:])
+        Handler(host=host, name=name channels=channels)
 
 if __name__ == "__main__":
     if __name__ == '__main__':

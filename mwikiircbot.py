@@ -10,14 +10,14 @@ class Handler:
     
     def endMOTD(self, sender, headers, message):
         for chan in self.channels:
-            bot.joinchan(chan)
+            self.bot.joinchan(chan)
 
 def main(cmd, args):
-    if len(args) < 1:
-        print("Usage: `" + cmd + " <host> <channel> [<channel> ...]` (for full arguments, see the readme)")
+    if len(args) < 2:
+        print("Usage: " + cmd + " <host> <channel> [<channel> ...]")
         return
-    else:
-        Handler(host=args[0])
+    elif len(args) > 1:
+        Handler(host=args[0], channels=args[1:])
 
 if __name__ == "__main__":
     if __name__ == '__main__':

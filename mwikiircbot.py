@@ -34,7 +34,7 @@ def main(cmd, args):
     if host == None:
         print("Usage: " + cmd + " [-n <name>] <host> <channel> [<channel> ...]")
         return
-    elif len(args) > 1:
+    else:
         Handler(host=host, name=name channels=channels)
 
 if __name__ == "__main__":

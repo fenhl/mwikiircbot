@@ -35,8 +35,7 @@ def main(cmd, args):
         print("Usage: " + cmd + " [-n <name>] <host> <channel> [<channel> ...]")
         return
     else:
-        Handler(host=host, name=name channels=channels)
+        Handler(host=host, name=name, channels=channels)
 
 if __name__ == "__main__":
-    if __name__ == '__main__':
-        main(sys.argv[0], sys.argv[1:] if len(sys.argv) > 1 else [])
+    main(sys.argv[0], sys.argv[1:] if len(sys.argv) > 1 else [])

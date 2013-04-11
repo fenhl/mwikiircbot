@@ -19,7 +19,9 @@ def main(cmd, args):
     name = "MediaWiki"
     channels = []
     while len(args) > 0:
-        if len(parsemode) < 1:
+        if args[0] == "-n" and parsemode[0] != "name":
+            parsemode.insert(0, "name")
+        elif len(parsemode) < 1:
             if args[0] == "-n":
                 parsemode.insert(0, "name")
             else:

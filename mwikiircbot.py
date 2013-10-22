@@ -11,7 +11,7 @@ Options:
   --version          Print version info and exit.
 """
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 from docopt import docopt
 import ircbotframe
@@ -47,7 +47,7 @@ class Handler:
 def main(arguments):
     channels = arguments['<channel>']
     global handler
-    handler = Handler(host=arguments['<host>'], port=arguments['--port'], name=arguments=['--name'], channels=arguments['<channel>'])
+    handler = Handler(host=arguments['<host>'], port=arguments['--port'], name=arguments['--name'], channels=arguments['<channel>'])
     rcserver = RecentChangesServer(('localhost', 51666), RecentChangesHandler)
     rcserver.serve_forever()
 

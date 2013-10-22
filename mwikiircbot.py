@@ -1,3 +1,19 @@
+#!/usr/bin/env python3
+"""MediaWiki recent changes IRC bot.
+
+Usage:
+  mwikiircbot.py [options] <host> <channel>...
+  
+Options:
+  -h, --help         Print this message and exit.
+  -n, --name=<name>  Use this name as the IRC nick [Default: MediaWiki].
+  --port=<port>      Connect to the IRC server at this port [Default: 6667].
+  --version          Print version info and exit.
+"""
+
+__version__ = '1.0.0'
+
+from docopt import docopt
 import ircbotframe
 import socketserver
 import sys
@@ -28,35 +44,13 @@ class Handler:
         for chan in self.channels:
             self.bot.joinchan(chan)
 
-def main(cmd, args):
-    args = args[:]
-    parsemode = ["host"]
-    host = None
-    name = "MediaWiki"
-    channels = []
-    while len(args) > 0:
-        if args[0] == "-n" and parsemode[0] != "name":
-            parsemode.insert(0, "name")
-        elif len(parsemode) < 1:
-            if args[0] == "-n":
-                parsemode.insert(0, "name")
-            else:
-                channels.append(args[0])
-        else:
-            if parsemode[0] == "name":
-                name = args[0]
-            elif parsemode[0] == "host":
-                host = args[0]
-            parsemode = parsemode[1:]
-        args = args[1:]
-    if host == None:
-        print("Usage: " + cmd + " [-n <name>] <host> <channel> [<channel> ...]")
-        return
-    else:
-        global handler
-        handler = Handler(host=host, name=name, channels=channels)
-        rcserver = RecentChangesServer(("localhost", 51666), RecentChangesHandler)
-        rcserver.serve_forever()
+def main(arguments):
+    channels = arguments['<channel>']
+    global handler
+    handler = Handler(host=arguments['<host>'], port=arguments['--port'], name=arguments=['--name'], channels=arguments['<channel>'])
+    rcserver = RecentChangesServer(('localhost', 51666), RecentChangesHandler)
+    rcserver.serve_forever()
 
-if __name__ == "__main__":
-    main(sys.argv[0], sys.argv[1:] if len(sys.argv) > 1 else [])
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version='mwikiircbot ' + __version__)
+    main(arguments)

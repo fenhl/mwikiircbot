@@ -1,6 +1,6 @@
 **mwikiircbot** is an [IRC][] bot that sits in one or more IRC channels and posts a livestream of recent changes from a [MediaWiki][] to the channels. It uses [the Python IRC bot framework][PythonIRCBotFramework].
 
-This is `mwikiircbot` verson 1.0.1 ([semver][Semver]). The versioned API includes the usage pattern, as found in the docstring of [`mwikiircbot.py`](mwikiircbot.py).
+This is `mwikiircbot` verson 1.0.2 ([semver][Semver]). The versioned API includes the usage pattern, as found in the docstring of [`mwikiircbot.py`](mwikiircbot.py).
 
 Configuration
 =============

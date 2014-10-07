@@ -9,7 +9,7 @@ Configuration
 *   If your wiki is running MediaWiki 1.21 or lower:
     *   Set your wiki's [$wgRC2UDPAddress](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPAddress) to an IP address or host name of the host where mwikiircbot will run.
     *   Set your wiki's [$wgRC2UDPPort](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPPort) to `51666`, and [$wgRC2UDPPrefix](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPPrefix) to the empty string.
-*   If your wiki is running MediaWiki 1.22 or higher, configure its [$wgRCFeeds](https://www.mediawiki.org/wiki/Manual:$wgRCFeeds) accordingly.
+*   If your wiki is running MediaWiki 1.22 or higher, either use the same legacy config, or configure its [$wgRCFeeds](https://www.mediawiki.org/wiki/Manual:$wgRCFeeds) for advanced control.
 
 Usage
 =====

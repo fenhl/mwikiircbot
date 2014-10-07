@@ -17,7 +17,7 @@ Usage
 See the docstring in [`mwikiircbot.py`](mwikiircbot.py).
 
 *   If specified, the bot will use `<name>` as its IRC nick. The default value is MediaWiki.
-*   Upon startup, the bot will connect to the IRC server specified by `<host>` at port 6667, and join the `<channel>`s. Make sure to prefix the channels with `#`, and to escape the channel name when calling from a command line.
+*   Upon startup, the bot will connect to the IRC server specified by `<host>` at port 6667, and join the `<channel>`s. Make sure to prefix the channels with `#`, and to escape the channel names when calling from a command line.
 
 [Docopt]: https://docopt.org/ (docopt)
 [IRC]: http://en.wikipedia.org/wiki/Internet_Relay_Chat (Wikipedia: Internet Relay Chat)

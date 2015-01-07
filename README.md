@@ -6,10 +6,19 @@ Configuration
 =============
 
 *   Make sure [the Python IRC bot framework][PythonIRCBotFramework] and [docopt][Docopt] are in [the module search path][Pythonpath].
+*   If your wiki is running MediaWiki 1.22 or higher, add a new entry to your [$wgRCFeeds](https://www.mediawiki.org/wiki/Manual:$wgRCFeeds) by adding the following to your `LocalSettings.php`:
+    
+    ```php
+    $wgRCFeeds['mwikiircbot'] = array(
+        'formatter' => 'IRCColourfulRCFeedFormatter',
+        'uri' => 'udp://localhost:51666', # replace 'localhost' with the hostname where mwikiircbot will run
+        'add_interwiki_prefix' => false,
+        'omit_bots' => true,
+    );
+    ```
 *   If your wiki is running MediaWiki 1.21 or lower:
     *   Set your wiki's [$wgRC2UDPAddress](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPAddress) to an IP address or host name of the host where mwikiircbot will run.
     *   Set your wiki's [$wgRC2UDPPort](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPPort) to `51666`, and [$wgRC2UDPPrefix](https://www.mediawiki.org/wiki/Manual:$wgRC2UDPPrefix) to the empty string.
-*   If your wiki is running MediaWiki 1.22 or higher, either use the same legacy config, or configure its [$wgRCFeeds](https://www.mediawiki.org/wiki/Manual:$wgRCFeeds) for advanced control.
 
 Usage
 =====
